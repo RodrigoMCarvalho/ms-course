@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/workers")
@@ -26,6 +25,8 @@ public class WorkerResource {
 
     @GetMapping("/{id}")
     private ResponseEntity<Worker> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(workerRepository.findById(id).get());
+        return workerRepository.findById(id)
+                .map(w -> ResponseEntity.ok().body(w))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
