@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.devsuperior</groupId>
-	<artifactId>hr-config-server</artifactId>
+	<artifactId>hr-com.rodrigo.hrapigatewayzuul.config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hr-config-server</name>
+	<name>hr-com.rodrigo.hrapigatewayzuul.config-server</name>
 	<description>Config Server</description>
 
 	<properties>
@@ -22,7 +22,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-com.rodrigo.hrapigatewayzuul.config-server</artifactId>
 		</dependency>
 
 		<dependency>

@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService implements UserDetailsService {
 
@@ -21,18 +23,12 @@ public class UserService implements UserDetailsService {
 
     public User findByEmail(String email) {
         User user = userFeignClient.findByEmail(email).getBody();
-        if(user == null) {
-            throw new EmailNotFountException("Email não encontrado");
-        }
-        return user;
+            return Optional.ofNullable(user).orElseThrow(() -> new EmailNotFountException("Email não encontrado"));
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userFeignClient.findByEmail(username).getBody();
-        if(user == null) {
-            throw new UsernameNotFoundException("Usuario não encontrado");
-        }
-        return user;
+            return Optional.ofNullable(user).orElseThrow(() -> new EmailNotFountException("Email não encontrado"));
     }
 }
